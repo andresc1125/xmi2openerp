@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_3W9bwJNHEeKymtwjKqpTNA" name="plataform">
+  <eAnnotations xmi:id="_3W9bwZNHEeKymtwjKqpTNA" source="Objing">
+    <contents xmi:type="uml:Property" xmi:id="_3W-C0JNHEeKymtwjKqpTNA" name="exporterVersion">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_3W-C0ZNHEeKymtwjKqpTNA" value="2.2"/>
+    </contents>
+  </eAnnotations>
+  <ownedComment xmi:id="_3W-C0pNHEeKymtwjKqpTNA">
+    <body></body>
+  </ownedComment>
+  <packagedElement xmi:type="uml:Package" xmi:id="_3W-C05NHEeKymtwjKqpTNA" name="Propietarios">
+    <packagedElement xmi:type="uml:Class" xmi:id="_3W-C1JNHEeKymtwjKqpTNA" name="Propietario">
+      <ownedAttribute xmi:id="_3W-C1ZNHEeKymtwjKqpTNA" name="name" isUnique="false" isReadOnly="true">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_3W-C1pNHEeKymtwjKqpTNA" name="tienda" type="_3W-C5ZNHEeKymtwjKqpTNA" isReadOnly="true" association="_3W-C2pNHEeKymtwjKqpTNA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_3W-C15NHEeKymtwjKqpTNA"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_3W-C2JNHEeKymtwjKqpTNA" name="taxi" type="_3W-C6JNHEeKymtwjKqpTNA" isReadOnly="true" association="_3W-C3JNHEeKymtwjKqpTNA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_3W-C2ZNHEeKymtwjKqpTNA"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_3W-C2pNHEeKymtwjKqpTNA" memberEnd="_3W-C1pNHEeKymtwjKqpTNA _3W-C25NHEeKymtwjKqpTNA">
+      <ownedEnd xmi:id="_3W-C25NHEeKymtwjKqpTNA" type="_3W-C1JNHEeKymtwjKqpTNA" association="_3W-C2pNHEeKymtwjKqpTNA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_3W-C3JNHEeKymtwjKqpTNA" memberEnd="_3W-C2JNHEeKymtwjKqpTNA _3W-C3ZNHEeKymtwjKqpTNA">
+      <ownedEnd xmi:id="_3W-C3ZNHEeKymtwjKqpTNA" type="_3W-C1JNHEeKymtwjKqpTNA" association="_3W-C3JNHEeKymtwjKqpTNA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_3W-C3pNHEeKymtwjKqpTNA" memberEnd="_3W-C35NHEeKymtwjKqpTNA _3W-C4pNHEeKymtwjKqpTNA">
+      <ownedEnd xmi:id="_3W-C35NHEeKymtwjKqpTNA" type="_3W-C4JNHEeKymtwjKqpTNA" association="_3W-C3pNHEeKymtwjKqpTNA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_3W-C4JNHEeKymtwjKqpTNA" name="Asociacion">
+      <ownedAttribute xmi:id="_3W-C4ZNHEeKymtwjKqpTNA" name="name" isUnique="false" isReadOnly="true">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_3W-C4pNHEeKymtwjKqpTNA" name="propietario" type="_3W-C1JNHEeKymtwjKqpTNA" isReadOnly="true" association="_3W-C3pNHEeKymtwjKqpTNA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_3W-C45NHEeKymtwjKqpTNA"/>
+      </ownedAttribute>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_3W-C5JNHEeKymtwjKqpTNA" name="Negocios">
+    <packagedElement xmi:type="uml:Class" xmi:id="_3W-C5ZNHEeKymtwjKqpTNA" name="Tienda">
+      <ownedAttribute xmi:id="_3W-C5pNHEeKymtwjKqpTNA" name="name" isUnique="false" isReadOnly="true">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_3W-C55NHEeKymtwjKqpTNA" name="activa" isUnique="false" isReadOnly="true">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_3W-C6JNHEeKymtwjKqpTNA" name="Taxi">
+      <ownedAttribute xmi:id="_3W-C6ZNHEeKymtwjKqpTNA" name="name" isUnique="false" isReadOnly="true">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_3W-C6pNHEeKymtwjKqpTNA" name="placa" isUnique="false" isReadOnly="true">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_3W-C65NHEeKymtwjKqpTNA" name="carreras" isUnique="false" isReadOnly="true">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+    </packagedElement>
+  </packagedElement>
+</uml:Model>
