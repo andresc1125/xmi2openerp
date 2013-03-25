@@ -1,2 +1,2 @@
-OpenERPModuler
+xmi2openerp
 ==============
