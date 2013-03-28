@@ -149,7 +149,7 @@ def createClassView(moduleName, className, atributes):
         moduleFile.write('                <field name="%s"/>\n' % (key))
     moduleFile.write('            </tree>\n')
     moduleFile.write('        </field>\n')
-    moduleFile.write('        </record>\n')
+    moduleFile.write('    </record>\n')
 
     moduleFile.write('    <record model="ir.actions.act_window" id="action_%s_seq">\n ' % (className))
     moduleFile.write('        <field name="name">%s</field>\n' % (moduleName + " " + className))
