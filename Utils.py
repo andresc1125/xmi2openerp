@@ -95,15 +95,15 @@ def createClass(moduleName, className, atributes):
             label = atributes[key]['label']
             moduleFile.write("        '%s' : fields.%s('%s','%s', select=True, ondelete='cascade'),\n" % (key, field, modClass, label))
         elif field == "char":
-            moduleFile.write("        '%s' : fields.%s('%s',size=255, translate = True , required = False , readonly = True),\n" % (key, field, key))
+            moduleFile.write("        '%s' : fields.%s('%s',size=255, translate = True , required = False , readonly = False),\n" % (key, field, key))
         elif field == "float":
-            moduleFile.write("        '%s' : fields.%s('%s',digits=(12,4) ,required = False , readonly = True),\n" % (key, field, key))
+            moduleFile.write("        '%s' : fields.%s('%s',digits=(12,4) ,required = False , readonly = False),\n" % (key, field, key))
         elif field == "integer":
-            moduleFile.write("        '%s' : fields.%s('%s',required = False , readonly = True),\n" % (key, field, key))
+            moduleFile.write("        '%s' : fields.%s('%s',required = False , readonly = False),\n" % (key, field, key))
         elif field == "boolean":
             moduleFile.write("        '%s' : fields.%s('%s'),\n" % (key, field, key))
         else:
-            moduleFile.write("        '%s' : fields.%s('%s',required = False , readonly = True),\n" % (key, field, key))
+            moduleFile.write("        '%s' : fields.%s('%s',required = False , readonly = False),\n" % (key, field, key))
 
     moduleFile.write('    }\n')
     moduleFile.write('    _defaults = { \n')
