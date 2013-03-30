@@ -39,10 +39,7 @@ def createOpenErpFile(moduleName, classes, dependences):
     for key in dependences:
         moduleInitFile.write("'%s'," % (key))
     moduleInitFile.write('],\n')
-    moduleInitFile.write('    "update_xml" : %s' % ("["))
-    for key in classes:
-        moduleInitFile.write("'%s'," % (moduleName + "_" + key + '_view.xml' ))
-    moduleInitFile.write('],\n')
+    moduleInitFile.write('    "update_xml" : [%s],\n' % ("'" + moduleName + '_view.xml'+"'"))
     moduleInitFile.write('    "active" : %s,\n' % ("False"))
     moduleInitFile.write('    "installable" : %s,\n' % ("True"))
     moduleInitFile.write("}")
@@ -56,12 +53,22 @@ def createModuleFile(moduleName):
     moduleFile.write("\n")
     moduleFile.close()
 
+def createViewFile(moduleName):
+    moduleViewName = moduleName + '/' + moduleName + '_view.xml'
+    moduleFile = open(moduleViewName, 'w')
+    moduleFile.write('<?xml version="1.0"?>\n')
+    moduleFile.write('<openerp>\n')
+    moduleFile.write('<data>\n')
+    moduleFile.write('<menuitem id="menu_%s_main" name="%s"/>\n' % (moduleName,moduleName))
+    moduleFile.close()
+
 def createSkeleton(moduleName, classes, dependences):
     if not os.path.isdir(moduleName):
         os.mkdir(moduleName)
         createModuleFile(moduleName)
         createInitFile(moduleName)
         createOpenErpFile(moduleName, classes, dependences)
+        createViewFile(moduleName)
 
 def createClass(moduleName, className, atributes):
     moduleFileName = moduleName + '/' + moduleName + '.py'
@@ -109,23 +116,16 @@ def createClass(moduleName, className, atributes):
     moduleFile.write("\n")
     moduleFile.close()
 
-def createView(moduleName, className):
-    moduleViewName = moduleName + '/' + moduleName + "_" + className + '_view.xml'
-    moduleFile = open(moduleViewName, 'w')
-    moduleFile.write('<?xml version="1.0"?>\n')
-    moduleFile.write("<openerp>\n")
-    moduleFile.write("<data>\n")
-    moduleFile.close()
 
-def closeView(moduleName, className):
-    moduleViewName = moduleName + '/' + moduleName + "_" + className + '_view.xml'
+def closeView(moduleName):
+    moduleViewName = moduleName + '/' + moduleName + '_view.xml'
     moduleFile = open(moduleViewName, 'a')
     moduleFile.write("</data>\n")
     moduleFile.write("</openerp>\n")
     moduleFile.close()
 
 def createClassView(moduleName, className, atributes):
-    moduleViewName = moduleName + '/' + moduleName + "_" + className + '_view.xml'
+    moduleViewName = moduleName + '/' + moduleName + '_view.xml'
     moduleFile = open(moduleViewName, 'a')
     moduleFile.write('    <record model="ir.ui.view" id="%s">\n' % (moduleName + "_" + className +"_form"))
     moduleFile.write('        <field name="name">%s</field>\n' % (moduleName + "." + className +".form"))
@@ -158,7 +158,8 @@ def createClassView(moduleName, className, atributes):
     moduleFile.write('        <field name="view_mode">tree,form</field>\n')
     moduleFile.write('    </record>\n')
 
-    moduleFile.write('    <menuitem id="menu_%s_main" name="%s"/>\n' % (moduleName + "_" + className,moduleName + " " + className))
+    moduleFile.write('    <menuitem id="menu_%s_main" name="%s" parent="menu_%s_main"/>\n' % (moduleName + "_" + className,moduleName + " " + className ,moduleName ))
     moduleFile.write('    <menuitem id="menu_%s" parent="menu_%s_main" name="%s" action="action_%s_seq"/>\n' % (moduleName + "_" + className,moduleName + "_" + className,moduleName + " " + className,className))
+    moduleFile.write('\n')
+    moduleFile.write('\n')
     moduleFile.close()
-    closeView(moduleName, className)

@@ -77,9 +77,8 @@ def parse_file(filename, options):
         erp.createSkeleton(module,modelioMap[module]['classes'].keys(),modelioMap[module]['dependences'].keys())
         for mClass in modelioMap[module]['classes'].keys():
             erp.createClass(classMap[mClass]['module'], mClass, classMap[mClass]['attributes'])
-            erp.createView(classMap[mClass]['module'], mClass)
             erp.createClassView(classMap[mClass]['module'], mClass, classMap[mClass]['attributes'])
-
+        erp.closeView(module)
     print "[INFO] Finished"
 
 
