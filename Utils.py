@@ -3,6 +3,7 @@ import os
 
 def kindOfField(field):
     kindOfField = ""
+    field = field.lower()
     if field == "integer":
         kindOfField = "integer"
     elif field == "string":
