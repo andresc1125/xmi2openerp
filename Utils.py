@@ -76,13 +76,13 @@ def createClass(moduleName, className, atributes):
     moduleFile.write('class %s(osv.osv):\n' % (moduleName + "_" + className))
     moduleFile.write('    _name = "%s"\n' % (moduleName + "." + className))
     moduleFile.write('    _description = "%s"\n' % (moduleName + " " + className))
-    moduleFile.write("    #_inherit = '' \n")
+    moduleFile.write("    #_inherit = ''\n")
     moduleFile.write('    #_inherits = {\n')
     moduleFile.write('    #}\n')
     moduleFile.write('    #_table = "%s"\n' % (moduleName + "_" + className))
-    moduleFile.write('    #__rec_name = _name \n')
-    moduleFile.write('    #_order = "name" \n')
-    moduleFile.write('    _columns = { \n')
+    moduleFile.write('    #__rec_name = _name\n')
+    moduleFile.write('    #_order = "name"\n')
+    moduleFile.write('    _columns = {\n')
     for key in atributes.keys():
         field = kindOfField(atributes[key]['field'])
         if field == "one2many":
@@ -95,23 +95,23 @@ def createClass(moduleName, className, atributes):
             label = atributes[key]['label']
             moduleFile.write("        '%s' : fields.%s('%s','%s', select=True, ondelete='cascade'),\n" % (key, field, modClass, label))
         elif field == "char":
-            moduleFile.write("        '%s' : fields.%s('%s',size=255, translate = True , required = False , readonly = False),\n" % (key, field, key))
+            moduleFile.write("        '%s' : fields.%s('%s', size=255, required = False, readonly = False),\n" % (key, field, key))
         elif field == "float":
-            moduleFile.write("        '%s' : fields.%s('%s',digits=(12,4) ,required = False , readonly = False),\n" % (key, field, key))
+            moduleFile.write("        '%s' : fields.%s('%s', digits=(12,4), required = False, readonly = False),\n" % (key, field, key))
         elif field == "integer":
-            moduleFile.write("        '%s' : fields.%s('%s',required = False , readonly = False),\n" % (key, field, key))
+            moduleFile.write("        '%s' : fields.%s('%s', required = False, readonly = False),\n" % (key, field, key))
         elif field == "boolean":
             moduleFile.write("        '%s' : fields.%s('%s'),\n" % (key, field, key))
         else:
-            moduleFile.write("        '%s' : fields.%s('%s',required = False , readonly = False),\n" % (key, field, key))
+            moduleFile.write("        '%s' : fields.%s('%s', required = False, readonly = False),\n" % (key, field, key))
 
     moduleFile.write('    }\n')
-    moduleFile.write('    _defaults = { \n')
+    moduleFile.write('    _defaults = {\n')
     moduleFile.write('    }\n')
-    moduleFile.write('    _auto = True \n')
-    moduleFile.write('    _log_access = True \n')
-    moduleFile.write('    _constraints = [] \n')
-    moduleFile.write('    _sql_constraints = [] \n')
+    moduleFile.write('    _auto = True\n')
+    moduleFile.write('    _log_access = True\n')
+    moduleFile.write('    _constraints = []\n')
+    moduleFile.write('    _sql_constraints = []\n')
     moduleFile.write('%s()\n' % (moduleName + "_" + className))
     moduleFile.write("\n")
     moduleFile.close()
@@ -129,7 +129,7 @@ def createClassView(moduleName, className, atributes):
     moduleFile = open(moduleViewName, 'a')
     moduleFile.write('    <record model="ir.ui.view" id="%s">\n' % (moduleName + "_" + className +"_form"))
     moduleFile.write('        <field name="name">%s</field>\n' % (moduleName + "." + className +".form"))
-    moduleFile.write('            <field name="model"> %s </field>\n' % (moduleName + "." + className ))
+    moduleFile.write('            <field name="model">%s</field>\n' % (moduleName + "." + className ))
     moduleFile.write('            <field name="type">form</field>\n')
     moduleFile.write('            <field name="arch" type="xml">\n')
     moduleFile.write('                <form string="%s">\n' % (moduleName + " " + className))
@@ -141,7 +141,7 @@ def createClassView(moduleName, className, atributes):
 
     moduleFile.write('    <record model="ir.ui.view" id="%s">\n' %(moduleName + "_" + className +"_tree"))
     moduleFile.write('        <field name="name">%s</field>\n' % (moduleName + "." + className +".tree"))
-    moduleFile.write('        <field name="model"> %s </field>\n' % (moduleName + "." + className ))
+    moduleFile.write('        <field name="model">%s</field>\n' % (moduleName + "." + className ))
     moduleFile.write('        <field name="type">tree</field>\n')
     moduleFile.write('        <field name="arch" type="xml">\n')
     moduleFile.write('            <tree string="%s">\n' % (moduleName + " " + className))
